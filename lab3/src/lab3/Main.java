@@ -24,7 +24,19 @@ public class Main {
             Collection<? extends Chordal> srcCollection,
             Collection<? super CommonHedgehog> collection1, //collection1 for Commonhedgehog and parents
             Collection<? super Manul> collection2,   //collection2 for Manuls and parents
-            Collection<? super Lynx> collection3){
+            Collection<? super Lynx> collection3)
+    {
+        for (Chordal animal : srcCollection){
+            if (animal instanceof CommonHedgehog) {
+                collection1.add((CommonHedgehog) animal);
+            }
+            if (animal instanceof Manul){
+                collection2.add((Manul) animal);
+            }
+            if (animal instanceof Lynx){
+                collection3.add((Lynx) animal);
+            }
+        }
 
     }
 }
