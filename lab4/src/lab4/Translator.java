@@ -25,7 +25,7 @@ public class Translator {
                 throw new InvalidFileFormatException("Invalid format in file. Empty line");
             }
             while (line != null){
-                String[] keyValue = line.split("//|");
+                String[] keyValue = line.split("\\|");
                 if (keyValue.length != 2 || keyValue[0].isBlank() || keyValue[0].isEmpty() || keyValue[1].isBlank()
                         || keyValue[1].isEmpty()) {      //обработка исключений по строке
                     throw new InvalidFileFormatException("Invalid format in file. Invalid line");
