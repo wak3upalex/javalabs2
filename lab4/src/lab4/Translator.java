@@ -77,4 +77,8 @@ public class Translator {
         }
         return finalTranslation.toString();
     }
+
+    public void printTranslation (String text){
+        System.out.println(translate(text));
+    }
 }
