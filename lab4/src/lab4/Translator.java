@@ -57,4 +57,24 @@ public class Translator {
         return new String[]{longestTranslation, Integer.toString(longestKeyLength)};
         //возвращаем через массив строк самый длинный перевод и длину самой длинной строки
     }
+
+    public String translate (String text){
+        StringBuilder finalTranslation = new StringBuilder();    //используем StringBuilder для того, чтобы можно было
+        // изменять строчку без создавания новых строк
+        int i = 0;
+        while (i < text.length()){
+            String[] translationInfo = translateExpression(text, i);//ищем перевод, начиная с позиции i
+            String translation = translationInfo[0];
+            if (translation != null){
+                finalTranslation.append(translation);
+                i += Integer.parseInt(translationInfo[1]);
+                //Увеличивает индекс i на длину переведенной фразы (translationInfo[1]). Это гарантирует, что следующая
+                //итерация цикла начнется сразу после конца последней успешно переведенной фразы.
+            }else {
+                finalTranslation.append(text.charAt(i));//если перевода не нашли, то просто добавляем без изменений
+                i++;
+            }
+        }
+        return finalTranslation.toString();
+    }
 }
