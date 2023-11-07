@@ -1,5 +1,9 @@
-java modules | модули ява
-very big cat | очень большая кошка
-java | ява
-cat | кошка
-read | читать
+laptop | ноутбук
+cool | крутой
+cool laptop | ноутбук крутой
+we | мы
+love | любим
+Polytech | Политех
+we love Polytech | мы любим Политех
+love Polytech | Политех любим
+java programming language | язык программирования Джава
