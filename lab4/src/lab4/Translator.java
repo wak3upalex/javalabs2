@@ -31,11 +31,30 @@ public class Translator {
                     throw new InvalidFileFormatException("Invalid format in file. Invalid line");
                 }
                 dictionary.put(keyValue[0].trim().toLowerCase(), keyValue[1].trim());   //добавляем одно слово, как
-                // ключ, второе, как значени
+                // ключ, второе, как значение
                 line = reader.readLine();
             }
         } catch (IOException e){
             throw new FileReadException("Error in reading file" + e);
         }
+    }
+
+    private String[] translateExpression(String text, int start){
+        String longestTranslation = null;
+        int longestKeyLength = 0;
+        for (String key : dictionary.keySet()){     //проходимся по значению ключей из словаря
+            if (text.regionMatches(true, start, key, 0, key.length())){
+                //игнорим регистр, сравнивет text начиная со 'start', сравнвает на соответствие с key, идм с первого
+                //элемента строки, идем по длине всего слова, которое мы взяли через key из dictionary
+
+                if (longestTranslation == null || key.length() > longestKeyLength){ //если это первый перевод или
+                    // длина текущего ключа key больше длины предыдущего наиболее длинного ключа
+                    longestTranslation = dictionary.get(key.toLowerCase()); //сохраняем новый длинный перевод
+                    longestKeyLength = key.length();    //обновляем длину самого длинного ключа
+                }
+            }
+        }
+        return new String[]{longestTranslation, Integer.toString(longestKeyLength)};
+        //возвращаем через массив строк самый длинный перевод и длину самой длинной строки
     }
 }
